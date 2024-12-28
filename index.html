@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select City</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="bg-container">
+    <h1 class="heading-home"> Weather Forecast</h1>
+    <div class="wheather-card">
+    <h1 class="city-heading">Select a City</h1>
+    <form id="cityForm">
+      <input  type="text" id="citySearch" placeholder="Search for a city..." oninput="filterCities()" />
+      <select name="city" id="city">
+        <!-- Options will be dynamically generated here -->
+      </select>
+      
+      <button type="submit">Get Weather</button>
+      
+    </form>
+      <!-- Button to get current location's nearby city -->
+      <div class="current-location-container">
+      <button id="currentLocationButton" onclick="getWeatherData()" class="nearby-city-button">Get Nearby City</button>
+      <!-- Display the nearby city -->
+      </div>
+      <p id="currentCity"></p>
+  </div>
+</div>
+
+  <script>
+    // List of Indian cities
+    const indianCities = [
+      // Existing cities
+      "Mumbai", "Delhi", "Bengaluru", "Hyderabad", "Ahmedabad", "Chennai", "Kolkata", "Pune", "Jaipur", "Lucknow",
+      "Kanpur", "Nagpur", "Indore", "Thane", "Bhopal", "Visakhapatnam", "Patna", "Vadodara", "Ghaziabad", "Ludhiana",
+      "Agra", "Nashik", "Faridabad", "Meerut", "Rajkot", "Kalyan-Dombivli", "Vasai-Virar", "Varanasi", "Srinagar",
+      "Aurangabad", "Dhanbad", "Amritsar", "Navi Mumbai", "Allahabad", "Ranchi", "Howrah", "Coimbatore", "Jabalpur",
+      "Gwalior", "Vijayawada", "Jodhpur", "Madurai", "Raipur", "Kota", "Chandigarh", "Guwahati", "Solapur", 
+      "Hubballi-Dharwad", "Mysuru", "Tiruchirappalli", "Bareilly", "Aligarh", "Tiruppur", "Moradabad", "Jalandhar",
+      "Bhubaneswar", "Salem", "Warangal", "Guntur", "Bhiwandi", "Saharanpur", "Gorakhpur", "Bikaner", "Amravati", 
+      "Noida", "Jamshedpur", "Bhilai", "Cuttack", "Firozabad", "Kochi", "Dehradun", "Durgapur", "Ajmer", "Ulhasnagar",
+      "Jhansi", "Siliguri", "Asansol", "Nanded", "Belagavi", "Tirupati", "Baranagar", "Pondicherry", "Sikar",
+      "Kakinada", "Udaipur", "Margao", "Rourkela", "Vellore", "Erode", "Kollam", "Sangli",
+      
+      // Andhra Pradesh cities
+      "Nellore", "Kurnool", "Rajahmundry", "Kadapa", "Anantapur", "Eluru", "Chittoor", "Machilipatnam", "Ongole",
+      "Srikakulam", "Vizianagaram", "Tenali", "Nandyal", "Proddatur", "Adoni", "Bhimavaram", "Markapur", "Amaravati",
+      "Peddapuram", "Palasa", "Tadepalligudem", "Palakollu", "Jaggayyapeta", "Madanapalle", "Yemmiganur", "Tanuku",
+      "Chilakaluripet", "Bapatla", "Pithapuram", "Tuni", "Dharmavaram", "Mandapeta", "Samalkot", "Narasaraopet",
+      "Macherla", "Guntakal", "Parvathipuram", "Kandukur", "Vinukonda", "Salur", "Nuzvid", "Sattenapalle", "Kavali",
+      "Venkatagiri", "Atmakur", "Nagari", "Punganur", "Puttur", "Rayachoti", "Chirala", "Mydukuru", "Tiruvuru",
+      "Mylavaram", "Anakapalle", "Narasapuram", "Rajampet", "Penukonda", "Sompeta", "Amudalavalasa", "Pulivendula",
+      "Srisailam", "Rampachodavaram", "Dhone"
+    ];
+    
+
+    // Function to populate the dropdown with city options
+    function populateCities() {
+      const citySelect = document.getElementById('city');
+      indianCities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        citySelect.appendChild(option);
+      });
+    }
+
+  
+  
+
+    // Function to filter cities based on search input
+    function filterCities() {
+      const searchTerm = document.getElementById('citySearch').value.toLowerCase();
+      const filteredCities = indianCities.filter(city => city.toLowerCase().includes(searchTerm));
+      
+      // Clear current options
+      const citySelect = document.getElementById('city');
+      citySelect.innerHTML = '';
+      
+      // Add the filtered options to the dropdown
+      filteredCities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        citySelect.appendChild(option);
+      });
+    }
+
+    // Initialize the city dropdown when the page loads
+    document.addEventListener('DOMContentLoaded', populateCities);
+
+    // Handle form submission to store the selected city and redirect
+    document.getElementById('cityForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const cityName = document.getElementById('city').value;
+      localStorage.setItem('cityName', cityName);
+      window.location.href = 'page2.html'; // Redirect to the weather details page
+    });
+
+
+    function getWeatherData() {
+      const cityName = document.getElementById('city').value;
+      localStorage.removeItem('cityName'); // Remove the city from localStorage
+      window.location.href = 'page2.html'; // Redirect to page2
+    }
+  
+  </script>
+</body>
+</html>

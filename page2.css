@@ -1,0 +1,311 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTp_DpzUf65RCuocrq1LCBRfJwFzPVjG2n7A1iPDjelflCPD8Xg') no-repeat center center fixed; /* Replace 'background.jpg' with your image path */
+    background-size: cover;
+    color: #fff;
+  }
+  
+  .container {
+    width: 100%;
+    height: 100vh;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+ 
+/* Top Section Styling */
+.top-section {
+    border:solid 2px rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .location-name-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .location-name-container i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #ffc107;
+  }
+  
+  .location-name-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  
+  .current-temp-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80vh;
+  }
+  
+  .current-temp {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .current-temp-description {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  
+  .current-temp-detailed-description {
+    font-size: 1rem;
+    color: #bbb;
+    margin-bottom: 20px;
+  }
+  
+  .feellike-prec-Hum-wind-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .fphw-item {
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    border-radius: 5px;
+    width: 45%; /* Adjust width to balance layout */
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .fphw-item:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
+  }
+  
+  .fphw-top-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  .fphw-top-section i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #00d4ff;
+  }
+  
+  .fphw-top-heading {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #ffc107;
+    margin-left: 10px;
+  }
+  
+  .fphw-miidle-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  /* Bottom Section Styling */
+  .bottom-section {
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .bottom-section h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffc107;
+  }
+  
+  /* Forecast List Styling */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-right: 10px;
+  }
+  
+  ul li:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  ul li .time {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  ul li .temp {
+    font-size: 1.2rem;
+  }
+  
+  ul li .description {
+    font-size: 1rem;
+    color: #bbb;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .fphw-item {
+      width: 100%; /* Stack items vertically */
+    }
+  }
+
+
+
+
+
+
+  /* General Layout */
+.bottom-section {
+  border:solid 2px rgba(0, 0, 0, 0.7);
+  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hourly Forecast */
+.hourly-forecast {
+  margin-bottom: 30px;
+}
+
+.hourly-forecast li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+  padding: 30px;
+  text-align: center;
+}
+
+.hourly-forecast img {
+  margin-right: 10px;
+}
+
+.hourly-forecast span {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Weekly Forecast */
+.forecast li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.forecast img {
+  margin-right: 10px;
+}
+
+.forecast span {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+
+  .hourly-forecast,
+  .forecast {
+    margin-bottom: 0;
+    margin-right: 20px;
+    width: 100%;
+  }
+}
+
+/* Icon styling */
+.forecast-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* General styling for the current weather details (if you have these elements elsewhere) */
+#city-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#current-temp {
+  font-size: 50px;
+  color: #333;
+}
+
+#description {
+  font-size: 30px;
+  color: #fff;
+}
+
+#detailed-description,
+#feels-like,
+#precipitation,
+#humidity,
+#wind-speed {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+#detailed-description {
+  margin-bottom: 15px;
+}
+
+.hourly-forecast-container{
+width: 100%;
+
+display: flex;
+flex-direction: row;
+overflow-x: auto;
+}
